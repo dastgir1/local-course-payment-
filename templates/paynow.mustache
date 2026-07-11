@@ -1,0 +1,50 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_course_carousel/paynow
+
+    Payment button template for course_carousel.
+
+    Example context (json):
+    {
+        "itemid": 1,
+        "coststring": "50.00",
+        "description": "Enrolment in Course Name"
+    }
+}}
+
+{{! Course / payment summary }}
+
+
+{{! Moodle payment button — data-component + data-paymentarea must match service_provider }}
+<button
+    data-action="core_payment/triggerPayment"
+    data-component="local_course_carousel"
+    data-paymentarea="enrolment"
+    data-itemid="{{itemid}}"
+    data-cost="{{coststring}}"
+    data-description="{{description}}"
+    class="btn btn-primary"
+>
+    {{# str }} sendpaymentbutton, enrol_fee {{/ str }}
+</button>
+
+{{#js}}
+    require(['core_payment/gateways_modal'], function(modal) {
+        modal.init();
+    });
+{{/js}}

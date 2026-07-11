@@ -1,0 +1,38 @@
+.card-wraper{
+    display: flex;
+    gap: 1rem;
+    transition: transform .5s ease;
+}
+.card{
+    flex: 0 0 calc((100% - 2rem) / 3);
+    margin: 0;
+}
+.carousel-inner{
+    overflow: hidden;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+
+  height: 30px;
+
+}
+.carousel-control-prev, .carousel-control-next {
+  position: absolute;
+  top: 200px !important;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  background: none;
+  border: 0;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+  height: 30px !important;
+}
+header#page-header {
+  margin-bottom: -50px !important;
+}

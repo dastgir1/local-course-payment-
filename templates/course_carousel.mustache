@@ -1,0 +1,93 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_course_carousel/course_carousel
+
+    Course carousel template.
+
+    Example context (json):
+    {
+        "courses": [
+            {
+                "isFirst": true,
+                "course": [
+                    {
+                        "fullname": "Course name",
+                        "summary": "Course summary",
+                        "link": "https://example.com/course/view.php?id=2",
+                        "imageurl": "https://example.com/pluginfile.php/..."
+                    }
+                ]
+            }
+        ]
+    }
+}}
+<div class="container ">
+    <h2 class="text-center mb-5">{{#str}}ourcourses,local_course_carousel{{/str}}</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-touch="false">
+                <div class="carousel-inner">
+                    {{#courses}}
+                        <div class="carousel-item {{#isFirst}}active{{/isFirst}}">
+                            <div class="card-wraper">
+                                {{#course}}
+                                    <div class="card">
+
+                                        <img src="{{imageurl}}" class="card-img-top" alt="{{fullname}}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{fullname}}</h5>
+                                            <div class="card-text">{{{summary}}}</div>
+                                            <div class="mb-4">
+                                                <div class="mb-3 lh-1">
+                                                    <span class="me-1">
+                                                        <i class="bi bi-calendar-check"></i>
+                                                    </span>
+                                                    <span>{{startdate}}</span>
+                                                </div>
+                                                <div class="lh-1">
+                                                   <!-- <span class="align-text-top me-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                                                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                                                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                                                        </svg>
+                                                    </span> -->
+                                                    <i class="fa-regular fa-clock"></i>
+                                                    <span>{{starttime}} – {{endtime}}</span>
+                                                </div>
+                                            </div>
+                                            <a href="{{link}}" class="btn btn-primary">{{#str}}viewcourse,local_course_carousel{{/str}}</a>
+                                        </div>
+                                    </div>
+                                {{/course}}
+                            </div>
+                        </div>
+                    {{/courses}}
+                </div>
+                <button class="carousel-control-prev" type="button">
+                    <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+                    <span class="visually-hidden">{{#str}}previous,local_course_carousel{{/str}}</span>
+                </button>
+                <button class="carousel-control-next" type="button">
+                    <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                    <span class="visually-hidden">{{#str}}next,local_course_carousel{{/str}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
